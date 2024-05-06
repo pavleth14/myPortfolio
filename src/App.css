@@ -1,0 +1,76 @@
+.App {
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.7;
+  background-image: url('../src/assets/imgs/mainBg.png');
+  background-position: center center;
+  background-size: cover;
+  height: 100vh;
+  color: white;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.fadeProfessionText {
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+  color: lightblue;
+}
+
+.fadeProfessionText.show {
+  opacity: 1;
+}
+
+/* Main img */
+
+@keyframes moveUpDown {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Main img */
+
+.welcomeToMyPortfolio {
+  border: 1px solid white;
+  width: fit-content;
+  padding: 20px;
+  background: linear-gradient(to right bottom, rgb(3, 3, 61), rgb(96, 3, 96) 75%);
+  font-weight: 700;
+  transition: border-color .2s ease-in; /* Dodajemo transition na boju granice */
+}
+
+.welcomeToMyPortfolio:hover {
+  border-color: rgb(96, 3, 96); /* Promjenite boju granice */
+  cursor: pointer;
+}
+
+.letsConnect {
+  display: flex;  
+  align-items: center;
+  border: 1px solid white;
+  background: linear-gradient(to right bottom, rgb(3, 3, 61), rgb(96, 3, 96) 75%);
+  color: white;
+  padding: 5px;
+  transition: border-color .2s ease-in; /* Dodajemo transition na boju granice */
+}
+
+.letsConnect:hover {
+  border-color: rgb(96, 3, 96);
+  cursor: pointer;
+}
+
+.faArrowCircleRight {
+  margin-left: 10px;
+  margin-top: 5px;
+}
+
