@@ -3,7 +3,7 @@
   line-height: 1.7;
   background-image: url('../src/assets/imgs/mainBg.png');
   background-position: center center;
-  background-size: cover;
+  background-size: cover;  
   height: 100vh;
   color: white;
 }
@@ -12,6 +12,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: #222831;
 }
 
 .fadeProfessionText {

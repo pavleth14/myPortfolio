@@ -9,7 +9,8 @@ const AllProjects = () => {
         flexDirection: 'column', // Change to column
         alignItems: 'center', // Center items horizontally
         width: '100%',
-        margin: '0 auto'
+        margin: '0 auto',
+        
     };
 
     const rowDiv = {
@@ -17,7 +18,8 @@ const AllProjects = () => {
         flexDirection: 'row',
         justifyContent: 'center', // Center items horizontally  
         border: '1px solid purple',
-        width: '100%'
+        width: '100%',
+        backgroundColor: '#222831'
     };
 
     const projectStyle = {
