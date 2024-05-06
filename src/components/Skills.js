@@ -20,7 +20,6 @@ const Skills = () => {
         borderRadius: '10px',
         padding: '100px 250px',
         backgroundColor: '#222831',
-        opacity: 0.9
     };
 
     const imgContainer = {
@@ -28,9 +27,9 @@ const Skills = () => {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        border: '1px solid black',
         transition: 'transform 0.5s ease',
-        transform: 'translateX(0)'
+        transform: 'translateX(0)',
+        paddingTop: '30px'
     };
 
     const [skills, setSkills] = useState([
@@ -80,7 +79,7 @@ const Skills = () => {
                 <p>Lorem Ipsum has been the industry's standard dummy text.</p>
 
                 <div style={imgContainer}>
-                    <FaArrowCircleLeft onClick={handleLeftArrow} style={{ fontSize: '2em', marginRight: '20px' }} />
+                    <FaArrowCircleLeft onClick={handleLeftArrow} style={{ fontSize: '2em', marginRight: '20px', marginBottom: '30px' }} />
 
                     {visibleSkills.map((skill, index) => (
                         <div key={index}>
@@ -91,7 +90,7 @@ const Skills = () => {
                         </div>
                     ))}
 
-                    <FaArrowCircleRight onClick={handleRightArrow} style={{ fontSize: '2em', marginLeft: '20px' }} />
+                    <FaArrowCircleRight onClick={handleRightArrow} style={{ fontSize: '2em', marginLeft: '20px', marginBottom: '30px' }} />
                 </div>
             </div>
         </div>

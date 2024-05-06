@@ -3,10 +3,16 @@ import AllProjects from "./AllProjects";
 
 const Projects = () => {
 
+    const outerContainer = {
+        backgroundColor: 'black',
+        marginTop: '150px'
+    }
+
     const containerStyle = {
         width: '80%',
         margin: '0 auto',
-        textAlign: 'center'
+        textAlign: 'center',
+        
     };
 
     const tabsContainerStyle = {
@@ -53,6 +59,7 @@ const Projects = () => {
     };
 
     return (
+        <div style={outerContainer}>
         <div style={containerStyle}>
             <h1>Projects</h1>
             <p>
@@ -67,6 +74,7 @@ const Projects = () => {
                 {generateTab(3, 'Tab 3')}
             </div>
             {activeTab === 1 && <AllProjects />}
+        </div>
         </div>
     );
 };

@@ -1,9 +1,12 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Header from './components/Header';
 import Home from './components/Home';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import { useState } from 'react';
+import Contact from './components/Contact';
+
 
 function App() {
   const [activePage, setActivePage] = useState('Home');
@@ -12,9 +15,9 @@ function App() {
     switch (activePage) {
       case 'Home':
         return <Home />;
-      case 'About':
+      case 'Skills':
         return <Skills />;
-      case 'Contact':
+      case 'Projects':
         return <Projects />;
       default:
         return <Home />;
@@ -24,7 +27,11 @@ function App() {
   return (
     <div className='App'>
       <Header setActivePage={setActivePage} activePage={activePage} />
-      {renderPage()}
+      <Home />
+      <Skills />
+      <Projects />
+      <Contact />
+      {/* {renderPage()} */}
     </div>
   );
 }

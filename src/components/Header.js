@@ -40,13 +40,13 @@ const Header = ({ setActivePage, activePage }) => {
                         Home
                     </li>
                     <li
-                        style={liStyle('About')}
-                        onClick={() => handleItemClick('About')}>
+                        style={liStyle('Skills')}
+                        onClick={() => handleItemClick('Skills')}>
                         Skills
                     </li>
                     <li
-                        style={liStyle('Contact')}
-                        onClick={() => handleItemClick('Contact')}
+                        style={liStyle('Projects')}
+                        onClick={() => handleItemClick('Projects')}
                     >
                         Projects
                     </li>
