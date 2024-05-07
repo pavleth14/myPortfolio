@@ -1,13 +1,25 @@
 import React from 'react';
 
-const Header = ({ setActivePage, activePage }) => {
+const Header = ({ setActivePage, activePage, handleSetActivePage }) => {
     const container = {
+        position: 'fixed',
+        top: 0,
+        left: '50%',
+        transform: 'translateX(-50%)',
+        width: '100%',
+        padding: '10px 20px',
+        zIndex: 5,
+        height: '100px',
+    };
+
+    const innerDiv = {
+        width: '80%',
         display: 'flex',
+        height: '100px',
         justifyContent: 'space-between',
         alignItems: 'center',
-        width: '80%',
-        margin: '0 auto'        
-    };
+        margin: '0 auto'
+    }
 
     const ulStyle = {
         display: 'flex',
@@ -17,6 +29,12 @@ const Header = ({ setActivePage, activePage }) => {
     };
 
     const handleItemClick = (itemName) => {
+        if (itemName === 'Home') {
+            window.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to the top of the page
+        } else {
+
+            handleSetActivePage(itemName);
+        }
         setActivePage(itemName);
     };
 
@@ -29,28 +47,30 @@ const Header = ({ setActivePage, activePage }) => {
 
     return (
         <div style={container}>
-            <div>
-                <h2>LOGO</h2>
-            </div>
-            <div>
-                <ul style={ulStyle}>
-                    <li
-                        style={liStyle('Home')}
-                        onClick={() => handleItemClick('Home')}>
-                        Home
-                    </li>
-                    <li
-                        style={liStyle('Skills')}
-                        onClick={() => handleItemClick('Skills')}>
-                        Skills
-                    </li>
-                    <li
-                        style={liStyle('Projects')}
-                        onClick={() => handleItemClick('Projects')}
-                    >
-                        Projects
-                    </li>
-                </ul>
+            <div style={innerDiv}>
+                <div>
+                    <h2>LOGO</h2>
+                </div>
+                <div>
+                    <ul style={ulStyle}>
+                        <li
+                            style={liStyle('Home')}
+                            onClick={() => handleItemClick('Home')}>
+                            Home
+                        </li>
+                        <li
+                            style={liStyle('Skills')}
+                            onClick={() => handleItemClick('Skills')}>
+                            Skills
+                        </li>
+                        <li
+                            style={liStyle('Projects')}
+                            onClick={() => handleItemClick('Projects')}
+                        >
+                            Projects
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     );

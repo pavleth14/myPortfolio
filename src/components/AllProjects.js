@@ -9,8 +9,7 @@ const AllProjects = () => {
         flexDirection: 'column', // Change to column
         alignItems: 'center', // Center items horizontally
         width: '100%',
-        margin: '0 auto',
-        
+        margin: '0 auto',        
     };
 
     const rowDiv = {
@@ -78,7 +77,7 @@ const AllProjects = () => {
 
     return (
         <div style={containerDiv}>
-            <h1>All Projects</h1>
+            <h1 style={{marginBottom: '100px'}}>All Projects</h1>
             {chunks.map((row, index) => (
                 <div key={index} style={rowDiv}>
                     {row.map((project, projectIndex) => (

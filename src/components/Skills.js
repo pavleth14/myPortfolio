@@ -7,9 +7,9 @@ import { FaArrowCircleRight, FaArrowCircleLeft } from "react-icons/fa";
 const Skills = () => {
     const container = {
         textAlign: 'center',
-        width: '80%',
+        width: '100%',
         margin: '0 auto',
-        marginTop: '100px',
+        marginTop: '250px',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center'
@@ -18,18 +18,23 @@ const Skills = () => {
     const outerDiv = {
         border: '1px solid white',
         borderRadius: '10px',
-        padding: '100px 250px',
-        backgroundColor: '#222831',
+        width: '50%',
+        paddingTop: '50px',
+        paddingBottom: '50px',
+        background: 'linear-gradient(#222831, #9198e5)'
     };
 
     const imgContainer = {
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'space-between',
         transition: 'transform 0.5s ease',
         transform: 'translateX(0)',
-        paddingTop: '30px'
+        paddingTop: '30px',
+        border: '1px solid white',      
+        width: '70%',
+        margin: '0 auto'
     };
 
     const [skills, setSkills] = useState([

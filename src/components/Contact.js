@@ -1,6 +1,9 @@
+import { useRef } from 'react';
 import contactImg from '../assets/imgs/contact-img.svg'
 
 const Contact = () => {
+
+    const contactRef = useRef(null); // Dodajte ref na spoljni div
 
     const container = {
         marginTop: '50px',
@@ -54,7 +57,7 @@ const Contact = () => {
     }
 
     return (
-        <div style={container}>
+        <div style={container} ref={contactRef}>
             <div style={outerDiv}>
                 <div style={imgDiv}>
                     <img style={imgStyle} src={contactImg} />

@@ -1,21 +1,22 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import headerImg from '../assets/imgs/header-img.svg'
 import { FaArrowCircleRight } from "react-icons/fa";
 
 
-const Home = () => {
+const Home = ({ contactRef }) => {
 
     const container = {
         width: '80%',
         margin: '0 auto',
         marginTop: '100px',
+        paddingTop: '150px',
         display: 'flex',
         justifyContent: 'space-between'
     }
 
     const profession = ['Web Developer', 'Web Designer', 'UX/UI Designer'];
     const [text, setText] = useState(profession[0]);
-    const [showText, setShowText] = useState(true);
+    const [showText, setShowText] = useState(true);        
 
     useEffect(() => {
         let i = 0;
@@ -29,13 +30,21 @@ const Home = () => {
         return () => clearInterval(interval);
     }, []);
 
+    const handleLetsConnect = (e) => {
+        e.preventDefault();
+        // Navigirajte na stranicu kontakta
+        // navigate('/contact');
+        // Skrolujte na kontakt sekciju kada se navigira
+        contactRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+
     return (
         <div style={container}>
             <div style={{ width: '60%' }}>
                 <div className="welcomeToMyPortfolio">Welcome to my Portfolio</div>
                 <h1>Hi, I'm Pavle. I'm <span className={`fadeProfessionText ${showText ? 'show' : ''}`}>{text}.</span></h1>
                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
-                <button className="letsConnect">
+                <button className="letsConnect" onClick={handleLetsConnect}>
                     Let's Connect
                     <span className="faArrowCircleRight"><FaArrowCircleRight /></span>
                 </button>

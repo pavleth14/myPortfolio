@@ -20,9 +20,10 @@ const Projects = () => {
         border: '1px solid purple',
         borderRadius: '30px',
         display: 'flex',
-        width: '100%',
+        width: '65%',
         margin: '0 auto',
-        marginTop: '35px'
+        marginTop: '50px', 
+        marginBottom: '50px'
     };
 
     const tabStyle = {
@@ -61,8 +62,8 @@ const Projects = () => {
     return (
         <div style={outerContainer}>
         <div style={containerStyle}>
-            <h1>Projects</h1>
-            <p>
+            <h1 style={{marginBottom: '50px'}}>Projects</h1>
+            <p style={{marginBottom: '150px', width: '1220px', margin: '0 auto'}}>
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry. Lorem Ipsum has been the industry's standard dummy text
                 ever since the 1500s, when an unknown printer took a galley of type
