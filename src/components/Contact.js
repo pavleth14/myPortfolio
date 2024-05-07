@@ -63,7 +63,7 @@ const Contact = () => {
         e.preventDefault();
         console.log('Form Data:', formData);
         try {
-            const response = await fetch('', {
+            const response = await fetch('http://localhost/myPortfolio/index.php', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -104,7 +104,7 @@ const Contact = () => {
                 </div>
                 <div style={formDiv}>
                     <h1>Get In Touch</h1>
-                    <form onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit} action="http://localhost/myPortfolio/index.php">
                         <div style={formRow}>
                             <div className="col-lg-6 col-sm-12 mb-3" style={{ border: '1px solid white' }}>
                                 <input
