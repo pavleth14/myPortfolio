@@ -1,9 +1,17 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 import contactImg from '../assets/imgs/contact-img.svg'
 
 const Contact = () => {
 
-    const contactRef = useRef(null); // Dodajte ref na spoljni div
+    const contactRef = useRef(null);
+
+    const [formData, setFormData] = useState({
+        firstName: '',
+        lastName: '',
+        email: '',
+        phone: '',
+        message: ''
+    });
 
     const container = {
         marginTop: '50px',
@@ -32,7 +40,7 @@ const Contact = () => {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'space-around',
-        
+
     }
 
     const formRow = {
@@ -51,10 +59,42 @@ const Contact = () => {
         borderRadius: '10px'
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        console.log(123);
-    }
+        console.log('Form Data:', formData);
+        try {
+            const response = await fetch('', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            });
+            if (response.ok) {
+                console.log('Email sent successfully');
+                // Optionally, you can reset the form fields after successful submission
+                setFormData({
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    phone: '',
+                    message: ''
+                });
+            } else {
+                console.error('Error sending email');
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    };
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData((prevFormData) => ({
+            ...prevFormData,
+            [name]: value
+        }));
+    };
 
     return (
         <div style={container} ref={contactRef}>
@@ -66,24 +106,63 @@ const Contact = () => {
                     <h1>Get In Touch</h1>
                     <form onSubmit={handleSubmit}>
                         <div style={formRow}>
-                            <div className="col-lg-6 col-sm-12 mb-3">
-                                <input type='text' className="form-control" placeholder="First Name" />
+                            <div className="col-lg-6 col-sm-12 mb-3" style={{ border: '1px solid white' }}>
+                                <input
+                                    style={{ width: '100%' }}
+                                    type="text"
+                                    name="firstName"
+                                    value={formData.firstName}
+                                    onChange={handleChange}
+                                    placeholder="First Name"
+                                    required
+                                />
                             </div>
                             <div className="col-lg-6 col-sm-12 mb-3">
-                                <input type='text' className="form-control" placeholder="Last Name" />
+                                <input
+                                    style={{ width: '100%' }}
+                                    type="text"
+                                    name="lastName"
+                                    value={formData.lastName}
+                                    onChange={handleChange}
+                                    placeholder="Last Name"
+                                    required
+                                />
                             </div>
                         </div>
                         <div style={formRow}>
                             <div className="col-lg-6 col-sm-12 mb-3">
-                                <input type='text' className="form-control" placeholder="Email Address" />
+                                <input
+                                    style={{ width: '100%' }}
+                                    type="email"
+                                    name="email"
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                    placeholder="Email Address"
+                                    required
+                                />
                             </div>
                             <div className="col-lg-6 col-sm-12 mb-3">
-                                <input type='text' className="form-control" placeholder="Phone No." />
+                                <input
+                                    style={{ width: '100%' }}
+                                    type="text"
+                                    name="phone"
+                                    value={formData.phone}
+                                    onChange={handleChange}
+                                    placeholder="Phone No."
+                                    required
+                                />
                             </div>
                         </div>
                         <div style={formRow}>
                             <div className="col-12">
-                                <textarea className="form-control" placeholder='Message'></textarea>
+                                <textarea
+                                    style={{ width: '100%' }}
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    placeholder="Message"
+                                    required
+                                ></textarea>
                             </div>
                         </div>
                         <button style={buttonStyle} type="submit"><span>Send</span></button>
