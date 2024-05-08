@@ -5,6 +5,7 @@ const Contact = () => {
 
     const contactRef = useRef(null);
 
+    const [isSuccessfull, setIsSuccessfull] = useState(null);    
     const [formData, setFormData] = useState({
         firstName: '',
         lastName: '',
@@ -59,9 +60,28 @@ const Contact = () => {
         borderRadius: '10px'
     }
 
+    const emailSuccessMessageStyle = {
+        border: '1px solid white', 
+        textAlign: 'center', 
+        color: 'white',
+        background: 'lightgreen',
+        padding: '5px 0',
+        marginTop: '10px'
+    }
+
+    const emailErrorMessageStyle = {
+        border: '1px solid white', 
+        textAlign: 'center', 
+        color: 'white',
+        background: 'red',
+        padding: '5px 0',
+        marginTop: '10px'
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         console.log('Form Data:', formData);
+        console.log('stringify form data', JSON.stringify(formData))
         try {
             const response = await fetch('http://localhost/myPortfolio/index.php', {
                 method: 'POST',
@@ -71,8 +91,10 @@ const Contact = () => {
                 body: JSON.stringify(formData)
             });
             if (response.ok) {
-                console.log('Email sent successfully');
-                // Optionally, you can reset the form fields after successful submission
+                console.log('Form submitted successfully');
+                setIsSuccessfull(true);
+                const data = await response.json(); // Dekodiraj JSON odgovor
+                console.log('Server Response:', data); // Prikazi odgovor u konzoli
                 setFormData({
                     firstName: '',
                     lastName: '',
@@ -81,12 +103,13 @@ const Contact = () => {
                     message: ''
                 });
             } else {
-                console.error('Error sending email');
+                console.error('Error submitting form');                
             }
         } catch (error) {
             console.error('Error:', error);
         }
     };
+    
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -104,7 +127,7 @@ const Contact = () => {
                 </div>
                 <div style={formDiv}>
                     <h1>Get In Touch</h1>
-                    <form onSubmit={handleSubmit} action="http://localhost/myPortfolio/index.php">
+                    <form onSubmit={handleSubmit} >
                         <div style={formRow}>
                             <div className="col-lg-6 col-sm-12 mb-3" style={{ border: '1px solid white' }}>
                                 <input
@@ -166,6 +189,7 @@ const Contact = () => {
                             </div>
                         </div>
                         <button style={buttonStyle} type="submit"><span>Send</span></button>
+                        {isSuccessfull && <div style={emailSuccessMessageStyle}>Your information is recieved successfuly</div>}                        
                     </form>
 
                 </div>

@@ -6,6 +6,7 @@ import Skills from './components/Skills';
 import Projects from './components/Projects';
 import { useRef, useState } from 'react';
 import Contact from './components/Contact';
+import Footer from './Footer';
 
 
 function App() {
@@ -66,6 +67,7 @@ function App() {
       <div ref={contactRef}> {/* Dodajte referencu za Contact komponentu */}
         <Contact />
       </div>
+      <Footer />
       {/* {renderPage()} */}
     </div>
   );
